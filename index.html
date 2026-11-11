@@ -3,35 +3,39 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-<title>เขาวงกตสายรุ้ง</title>
+<title>เขาวงกตสวนพุ่มไม้</title>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;-webkit-user-select:none;user-select:none}
-html,body{height:100%;background:#1b0b3a;font-family:Kanit,system-ui,sans-serif;color:#fff;overflow:hidden;touch-action:none}
+html,body{height:100%;background:#12351f;font-family:Kanit,system-ui,sans-serif;color:#fff;overflow:hidden;touch-action:none}
 #game{position:fixed;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated}
 #hud{position:fixed;top:0;left:0;right:0;display:flex;gap:8px;padding:10px;flex-wrap:wrap;justify-content:center;align-items:center}
-.chip{background:rgba(25,6,60,.72);border:2px solid var(--c);border-radius:14px;padding:4px 14px;font-weight:700;font-size:17px;box-shadow:0 0 14px var(--c)}
-.chip small{font-weight:400;opacity:.8;margin-right:6px}
+.chip{background:rgba(10,40,25,.72);border:2px solid var(--c);border-radius:14px;padding:4px 14px;font-weight:700;font-size:17px;box-shadow:0 0 14px var(--c)}
+.chip small{font-weight:400;opacity:.85;margin-right:6px}
 #time.low{animation:blink .5s infinite alternate;color:#ff6b6b}
 @keyframes blink{to{background:#a00018}}
 button{font-family:inherit;cursor:pointer}
 #restart{background:linear-gradient(135deg,#ff4fd8,#ff9a3c);border:0;color:#fff;font-weight:700;font-size:16px;padding:7px 16px;border-radius:14px;box-shadow:0 4px 0 #8c2a7a}
 #restart:active{transform:translateY(3px);box-shadow:0 1px 0 #8c2a7a}
-#mini{position:fixed;right:10px;top:70px;width:140px;height:140px;border:3px solid #3cf2ff;border-radius:12px;background:#12062b;box-shadow:0 0 16px #3cf2ff}
-#toast{position:fixed;left:0;right:0;top:34%;text-align:center;font-size:40px;font-weight:700;color:#ffe45e;text-shadow:0 3px 0 #b05a00,0 0 20px #ffb800;opacity:0;transition:opacity .25s;pointer-events:none}
+#mini{position:fixed;right:10px;top:70px;width:140px;height:140px;border:3px solid #ffe45e;border-radius:12px;background:#0d2616;box-shadow:0 0 16px #ffe45e}
+#toast{position:fixed;left:0;right:0;top:30%;text-align:center;font-size:40px;font-weight:700;color:#ffe45e;text-shadow:0 3px 0 #b05a00,0 0 20px #ffb800;opacity:0;transition:opacity .25s;pointer-events:none}
 .pad{position:fixed;bottom:18px;display:flex;gap:12px}
 #padL{left:16px}#padR{right:16px}
 .pad button{width:72px;height:72px;border-radius:50%;border:3px solid #fff;font-size:28px;color:#fff;background:rgba(255,79,216,.55);touch-action:none}
 #padR button{background:rgba(60,242,255,.5)}
 .pad button.on{transform:scale(.92);filter:brightness(1.4)}
-#ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(15,3,40,.7);padding:16px}
+#ov{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(8,30,18,.72);padding:16px}
 #ov.hide{display:none}
-.panel{max-width:440px;width:100%;text-align:center;padding:28px 24px;border-radius:24px;background:#26104f;border:4px solid transparent;background:linear-gradient(#26104f,#26104f) padding-box,linear-gradient(135deg,#ff4fd8,#ffe45e,#3cf2ff) border-box;box-shadow:0 0 40px rgba(255,79,216,.5)}
-.panel h1{font-size:36px;line-height:1.2;margin-bottom:10px;background:linear-gradient(90deg,#ff4fd8,#ffe45e,#3cf2ff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.panel p{margin:6px 0;font-size:16px;line-height:1.5;color:#e6dcff}
+.panel{max-width:440px;width:100%;text-align:center;padding:28px 24px;border-radius:24px;border:4px solid transparent;background:linear-gradient(#17482b,#17482b) padding-box,linear-gradient(135deg,#ff4fd8,#ffe45e,#3cf2ff) border-box;box-shadow:0 0 40px rgba(255,228,94,.4)}
+.panel h1{font-size:34px;line-height:1.2;margin-bottom:10px;background:linear-gradient(90deg,#ff7ae0,#ffe45e,#7cffb0);-webkit-background-clip:text;background-clip:text;color:transparent}
+.panel p{margin:6px 0;font-size:16px;line-height:1.5;color:#e6ffe9}
 .panel b{color:#ffe45e}
 #go{margin-top:18px;font-size:22px;font-weight:700;color:#fff;border:0;padding:12px 34px;border-radius:18px;background:linear-gradient(135deg,#27d17f,#3cf2ff);box-shadow:0 5px 0 #0b7a5a}
 #go:active{transform:translateY(4px);box-shadow:0 1px 0 #0b7a5a}
+#pick{display:flex;gap:10px;justify-content:center;margin-top:14px}
+#pick button{flex:1;padding:10px 4px;border-radius:16px;border:3px solid #6fd39a;background:#1f6a3d;color:#fff;font-size:16px;font-weight:700;line-height:1.2}
+#pick button span{display:block;font-size:38px}
+#pick button.sel{border-color:#ffe45e;background:#c45bd0;transform:translateY(-4px);box-shadow:0 0 18px #ffe45e}
 </style>
 </head>
 <body>
@@ -41,52 +45,80 @@ button{font-family:inherit;cursor:pointer}
   <div class="chip" id="time" style="--c:#3cf2ff"><small>เวลา</small><span id="tm">0:00</span></div>
   <div class="chip" style="--c:#ffe45e"><small>เหรียญ</small><span id="cn">0/0</span></div>
   <div class="chip" style="--c:#27d17f"><small>คะแนน</small><span id="sc">0</span></div>
+  <div class="chip" id="pot" style="--c:#d36bff;display:none"><small>ร่างโต</small><span id="pt">0</span></div>
+  <div class="chip" id="psn" style="--c:#4dff5e;display:none"><small>☠ พิษ</small><span id="ps">0</span></div>
   <button id="restart">เริ่มใหม่</button>
 </div>
 <canvas id="mini" width="140" height="140"></canvas>
 <div id="toast"></div>
 <div class="pad" id="padL"><button data-k="ArrowLeft">◀</button><button data-k="ArrowRight">▶</button></div>
 <div class="pad" id="padR"><button data-k="ArrowUp">▲</button><button data-k="ArrowDown">▼</button></div>
-<div id="ov"><div class="panel"><h1 id="ot"></h1><div id="ob"></div><button id="go"></button></div></div>
+<div id="ov"><div class="panel"><h1 id="ot"></h1><div id="ob"></div><div id="pick"></div><button id="go"></button></div></div>
 
 <script>
 const cv=document.getElementById('game'),g=cv.getContext('2d'),mc=document.getElementById('mini'),m2=mc.getContext('2d');
 const $=id=>document.getElementById(id);
-let W,H,zb=[],map,n,w,L=1,score=0,coins=[],got=0,total=0,timeLeft=0,seen,state='start',p={x:1.5,y:1.5,a:0},exit={x:0,y:0},best=0;
+let FOV=1,K=Math.sqrt(.66/1),W,H,zb=[],map,wt,n,w,L=1,score=0,coins=[],got=0,total=0,timeLeft=0,seen,state='start',p={x:2,y:2,a:0},exit={x:0,y:0},best=0,CX=0,CY=0,BK=1,pet='dog',morph=0,potions=[],traps=[],wells=[],poison=0,pcnt=0;
+const PETS={
+ dog:{n:'ลูกหมา',a:'หมา',e:'🐶',baby:{b:'#f2c48d',d:'#a0672d'},adult:{b:'#c9822f',d:'#5f3512'}},
+ cat:{n:'ลูกแมว',a:'แมว',e:'🐱',baby:{b:'#cfd3ee',d:'#6c6f99'},adult:{b:'#8b90c4',d:'#3a3d7a'}},
+ chick:{n:'ลูกไก่',a:'ไก่',e:'🐤',baby:{b:'#ffe45e',d:'#ff9a1f'},adult:{b:'#ffffff',d:'#e0262c'}}
+};
 try{best=+localStorage.getItem('mazeBest')||0}catch(e){}
+const rnd=i=>{const s=Math.sin(i*12.9898)*43758.5453;return s-Math.floor(s)};
 
 function resize(){const s=Math.min(1,800/innerWidth);W=Math.floor(innerWidth*s);H=Math.floor(innerHeight*s);cv.width=W;cv.height=H;zb=new Float32Array(W)}
 addEventListener('resize',resize);resize();
 
-/* ---------- สร้างเขาวงกต ---------- */
+/* ---------- สร้างเขาวงกต: ทางเดินกว้าง 2 ช่อง ---------- */
 function gen(n){
-  const w=2*n+1,m=Array.from({length:w},()=>Array(w).fill(1)),vis=new Set(['0,0']),st=[[0,0]];
-  m[1][1]=0;
+  const w=3*n+1,m=Array.from({length:w},()=>Array(w).fill(1));
+  const open=(cx,cy)=>{for(let y=0;y<2;y++)for(let x=0;x<2;x++)m[3*cy+1+y][3*cx+1+x]=0};
+  const link=(ax,ay,bx,by)=>{
+    if(bx!==ax){const x=3*Math.min(ax,bx)+3;for(let y=0;y<2;y++)m[3*ay+1+y][x]=0}
+    else{const y=3*Math.min(ay,by)+3;for(let x=0;x<2;x++)m[y][3*ax+1+x]=0}
+  };
+  const vis=new Set(['0,0']),st=[[0,0]];open(0,0);
   while(st.length){
     const[cx,cy]=st[st.length-1];
-    const nb=[[1,0],[-1,0],[0,1],[0,-1]].map(([a,b])=>[cx+a,cy+b,a,b]).filter(([x,y])=>x>=0&&y>=0&&x<n&&y<n&&!vis.has(x+','+y));
+    const nb=[[1,0],[-1,0],[0,1],[0,-1]].map(([a,b])=>[cx+a,cy+b]).filter(([x,y])=>x>=0&&y>=0&&x<n&&y<n&&!vis.has(x+','+y));
     if(!nb.length){st.pop();continue}
-    const[x,y,a,b]=nb[Math.random()*nb.length|0];
-    vis.add(x+','+y);m[2*cy+1+b][2*cx+1+a]=0;m[2*y+1][2*x+1]=0;st.push([x,y]);
+    const[x,y]=nb[Math.random()*nb.length|0];
+    vis.add(x+','+y);open(x,y);link(cx,cy,x,y);st.push([x,y]);
+  }
+  let k=Math.max(0,Math.round((9-L)*n/3));
+  for(let i=0;i<500&&k>0;i++){
+    const cx=Math.random()*n|0,cy=Math.random()*n|0,h=Math.random()<.5,bx=cx+(h?1:0),by=cy+(h?0:1);
+    if(bx>=n||by>=n)continue;
+    const t=h?m[3*cy+1][3*cx+3]:m[3*cy+3][3*cx+1];
+    if(t===1){link(cx,cy,bx,by);k--}
   }
   return m;
 }
 function setup(){
-  n=Math.min(4+L,18);w=2*n+1;map=gen(n);
-  // ด่านแรกๆ มีทางลัดเยอะ ยิ่งสูงยิ่งน้อย
-  let k=Math.max(0,Math.round((9-L)*n/3));
-  for(let i=0;i<400&&k>0;i++){
-    const x=1+Math.random()*(w-2)|0,y=1+Math.random()*(w-2)|0;
-    if(map[y][x]===1&&(x+y)%2===1&&((map[y][x-1]===0&&map[y][x+1]===0)||(map[y-1][x]===0&&map[y+1][x]===0))){map[y][x]=0;k--}
-  }
-  exit={x:2*n-.5,y:2*n-.5};
+  n=Math.min(5+L,18);w=3*n+1;map=gen(n);
+  // ชนิดสิ่งกีดขวาง: 0 พุ่มไม้, 1 กำแพงอิฐ, 2 รั้วไม้
+  wt=map.map((row,y)=>row.map((v,x)=>{
+    if(!v)return -1;
+    if(x===0||y===0||x===w-1||y===w-1)return 1;
+    const r=rnd(x*3.1+y*7.7+L*1.3);return r<.5?0:r<.78?1:2;
+  }));
+  exit={x:3*n-1,y:3*n-1};
   const cells=[];
-  for(let y=1;y<w;y+=2)for(let x=1;x<w;x+=2)if(!(x===1&&y===1)&&!(x===2*n-1&&y===2*n-1))cells.push([x+.5,y+.5]);
+  for(let cy=0;cy<n;cy++)for(let cx=0;cx<n;cx++)if((cx||cy)&&!(cx===n-1&&cy===n-1))cells.push([3*cx+2+(Math.random()-.5)*.8,3*cy+2+(Math.random()-.5)*.8,cx,cy]);
   for(let i=cells.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[cells[i],cells[j]]=[cells[j],cells[i]]}
-  total=Math.min(3+L,16);coins=cells.slice(0,total).map(c=>({x:c[0],y:c[1],on:true}));got=0;
-  timeLeft=Math.round((30+n*n*1.2)*Math.max(.55,1-(L-1)*.035));
+  total=Math.min(3+L,16);
+  const pc=cells.filter(c=>c[2]+c[3]>=2&&c[2]+c[3]<=n+2).slice(0,L<4?1:2);
+  potions=pc.map(c=>({x:c[0],y:c[1],on:true}));morph=0;
+  const rest=cells.filter(c=>!pc.includes(c));
+  coins=rest.slice(0,total).map(c=>({x:c[0],y:c[1],on:true}));got=0;
+  const nt=Math.min(2+L,14),tc=rest.slice(total).filter(c=>c[2]+c[3]>=2),tr=tc.slice(0,nt);
+  traps=tr.map(c=>({x:c[0],y:c[1],cd:0}));
+  wells=rest.slice(total).filter(c=>!tr.includes(c)).slice(0,Math.max(2,Math.ceil(nt/2))).map(c=>({x:c[0],y:c[1]}));
+  poison=0;pcnt=0;
+  timeLeft=Math.round((30+n*n*1.4)*Math.max(.55,1-(L-1)*.035));
   seen=Array.from({length:w},()=>Array(w).fill(false));
-  p={x:1.5,y:1.5,a:map[1][2]===0?0:Math.PI/2};
+  p={x:2,y:2,a:map[2][3]===0?0:Math.PI/2};
 }
 
 /* ---------- เสียง ---------- */
@@ -101,6 +133,7 @@ addEventListener('keydown',e=>{
   keys[e.code]=1;
   if((e.code==='Enter'||e.code==='Space')&&state!=='play')$('go').click();
   if(e.code==='KeyR')restart();
+  if(e.code==='KeyF'){FOV=FOV<.9?1:FOV<1.1?1.4:.8;K=Math.sqrt(.66/FOV);toast('มุมมอง '+Math.round(2*Math.atan(FOV)*180/Math.PI)+'°')}
 });
 addEventListener('keyup',e=>keys[e.code]=0);
 document.querySelectorAll('.pad button').forEach(b=>{
@@ -109,31 +142,51 @@ document.querySelectorAll('.pad button').forEach(b=>{
 });
 cv.addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&e.buttons&&state==='play')p.a+=e.movementX*.006});
 
-/* ---------- เกมหลัก ---------- */
+/* ---------- ตรรกะเกม ---------- */
 const wall=(x,y)=>map[y|0][x|0]===1;
-function tryMove(dx,dy){const r=.22;if(!wall(p.x+dx+Math.sign(dx)*r,p.y))p.x+=dx;if(!wall(p.x,p.y+dy+Math.sign(dy)*r))p.y+=dy}
+function tryMove(dx,dy){const r=.2;if(!wall(p.x+dx+Math.sign(dx)*r,p.y))p.x+=dx;if(!wall(p.x,p.y+dy+Math.sign(dy)*r))p.y+=dy}
+function poisonDeath(why){
+  state='over';poison=0;pcnt=0;beep(120,.8,'sawtooth');
+  if(score>best){best=score;try{localStorage.setItem('mazeBest',best)}catch(e){}}
+  showOv('ตายเพราะพิษ ☠',`<p>${why}</p><p>ไปถึงด่านที่ <b>${L}</b></p><p>คะแนน <b>${score}</b></p><p>คะแนนสูงสุด <b>${best}</b></p>`,'เล่นอีกครั้ง',true);
+}
 function update(dt){
-  const rot=(keys.ArrowRight?1:0)-(keys.ArrowLeft?1:0);p.a+=rot*2.4*dt;
+  p.a+=((keys.ArrowRight?1:0)-(keys.ArrowLeft?1:0))*2.4*dt;
   const f=((keys.ArrowUp||keys.KeyW)?1:0)-((keys.ArrowDown||keys.KeyS)?1:0);
-  const s=(keys.KeyD?1:0)-(keys.KeyA?1:0),sp=3*dt,c=Math.cos(p.a),sn=Math.sin(p.a);
+  const s=(keys.KeyD?1:0)-(keys.KeyA?1:0),sp=(morph>0?5.6:2.2)*(poison>0?.6:1)*dt,c=Math.cos(p.a),sn=Math.sin(p.a);
   tryMove((c*f-sn*s)*sp,(sn*f+c*s)*sp);
-  for(let y=-2;y<=2;y++)for(let x=-2;x<=2;x++){const cx=(p.x|0)+x,cy=(p.y|0)+y;if(cx>=0&&cy>=0&&cx<w&&cy<w&&x*x+y*y<=5)seen[cy][cx]=true}
-  for(const q of coins)if(q.on&&Math.hypot(q.x-p.x,q.y-p.y)<.45){q.on=false;got++;score+=50;timeLeft+=3;beep(880,.1);setTimeout(()=>beep(1320,.12),70);toast('+50  +3 วินาที')}
-  if(Math.hypot(exit.x-p.x,exit.y-p.y)<.55){
+  for(let y=-3;y<=3;y++)for(let x=-3;x<=3;x++){const cx=(p.x|0)+x,cy=(p.y|0)+y;if(cx>=0&&cy>=0&&cx<w&&cy<w&&x*x+y*y<=10)seen[cy][cx]=true}
+  for(const q of coins)if(q.on&&Math.hypot(q.x-p.x,q.y-p.y)<.55){q.on=false;got++;score+=50;timeLeft+=3;beep(880,.1);setTimeout(()=>beep(1320,.12),70);toast('+50  +3 วินาที')}
+  for(const q of potions)if(q.on&&Math.hypot(q.x-p.x,q.y-p.y)<.6){q.on=false;morph=15;beep(520,.15,'sine');setTimeout(()=>beep(780,.15,'sine'),110);setTimeout(()=>beep(1040,.3,'sine'),220);toast('✨ กลายเป็น'+PETS[pet].a+'โต! วิ่งเร็ว 15 วินาที')}
+  if(morph>0){morph-=dt;if(morph<=0){morph=0;beep(300,.3,'triangle');toast('น้ำยาหมดฤทธิ์ กลับเป็น'+PETS[pet].n)}}
+  for(const q of traps){
+    if(q.cd>0)q.cd-=dt;
+    else if(Math.hypot(q.x-p.x,q.y-p.y)<.6){
+      q.cd=9;
+      if(poison>0){poisonDeath('โดนพิษซ้ำทั้งที่ยังไม่ได้ล้างพิษ');return}
+      poison=30;pcnt=1;beep(150,.35,'sawtooth');setTimeout(()=>beep(110,.4,'sawtooth'),150);toast('☠ โดนพิษ! รีบไปล้างที่บ่อน้ำภายใน 30 วินาที');
+    }
+  }
+  if(poison>0){
+    for(const q of wells)if(Math.hypot(q.x-p.x,q.y-p.y)<.85){poison=0;pcnt=0;beep(660,.12,'sine');setTimeout(()=>beep(990,.2,'sine'),100);toast('💧 ล้างพิษสำเร็จ!');break}
+  }
+  if(poison>0){poison-=dt;if(poison<=0){poisonDeath('ไม่ได้ล้างพิษทันเวลา');return}}
+  if(Math.hypot(exit.x-p.x,exit.y-p.y)<.7){
     const bonus=100*L+Math.ceil(timeLeft)*5+got*20;score+=bonus;state='levelup';beep(660,.15);setTimeout(()=>beep(990,.3),150);
-    showOv(`ผ่านด่าน ${L}!`,`<p>เก็บเหรียญ <b>${got}/${total}</b></p><p>โบนัสผ่านด่าน <b>+${bonus}</b></p><p>คะแนนรวม <b>${score}</b></p><p>ด่านต่อไปเขาวงกตใหญ่ขึ้นและเวลาน้อยลง</p>`,'ด่านต่อไป');
+    showOv(`ผ่านด่าน ${L}!`,`<p>เก็บเหรียญ <b>${got}/${total}</b></p><p>โบนัสผ่านด่าน <b>+${bonus}</b></p><p>คะแนนรวม <b>${score}</b></p><p>ด่านต่อไปสวนใหญ่ขึ้นและเวลาน้อยลง</p>`,'ด่านต่อไป');
   }
   timeLeft-=dt;
   if(timeLeft<=0){timeLeft=0;state='over';beep(180,.5,'sawtooth');
     if(score>best){best=score;try{localStorage.setItem('mazeBest',best)}catch(e){}}
-    showOv('หมดเวลา!',`<p>ไปถึงด่านที่ <b>${L}</b></p><p>คะแนน <b>${score}</b></p><p>คะแนนสูงสุด <b>${best}</b></p>`,'เล่นอีกครั้ง');}
+    showOv('หมดเวลา!',`<p>ไปถึงด่านที่ <b>${L}</b></p><p>คะแนน <b>${score}</b></p><p>คะแนนสูงสุด <b>${best}</b></p>`,'เล่นอีกครั้ง',true);}
 }
 
-/* ---------- เรนเดอร์ มุมมองบุคคลที่หนึ่ง ---------- */
+/* ---------- เรนเดอร์: กล้องอยู่ด้านหลังตัวละคร ---------- */
+const SKY=[['#2f8bff','#c4ecff'],['#ff7a59','#ffd36e'],['#6a4cff','#ff9ae0'],['#17b3a3','#d4fff0']];
 function spr(sx,sy,col,rw,rh,vo,px,py,dx,dy){
-  const rx=sx-p.x,ry=sy-p.y,inv=1/(px*dy-dx*py),tx=inv*(dy*rx-dx*ry),ty=inv*(-py*rx+px*ry);
+  const rx=sx-CX,ry=sy-CY,inv=1/(px*dy-dx*py),tx=inv*(dy*rx-dx*ry),ty=inv*(-py*rx+px*ry);
   if(ty<.15)return;
-  const sc=(W/2)*(1+tx/ty),sz=H/ty,r=sz*rw,hh=sz*rh,cy=H/2+sz*vo;
+  const sc=(W/2)*(1+tx/ty),sz=H/ty*K,r=sz*rw,hh=sz*rh,cy=H/2+sz*vo;
   g.fillStyle=col;
   for(let x=Math.max(0,Math.floor(sc-r));x<Math.min(W,sc+r);x++){
     if(zb[x]<ty)continue;
@@ -141,80 +194,159 @@ function spr(sx,sy,col,rw,rh,vo,px,py,dx,dy){
     g.fillRect(x,cy-hh*c,1,hh*2*c);
   }
 }
+function drawWall(x,top,lh,type,mx,my,side,wx,d){
+  const fg=Math.max(.4,1-d/14),key=Math.floor(wx*14)+mx*31+my*57,hj=(mx*13+my*7)%25;
+  if(type===0){ // พุ่มไม้ใบเขียว มีดอกไม้
+    g.fillStyle=`hsl(${115+hj},62%,${(side?26:34)*fg}%)`;g.fillRect(x,top,1,lh);
+    for(let k=0;k<5;k++){g.fillStyle=`hsl(${105+hj},72%,${(side?38:48)*fg}%)`;g.fillRect(x,top+lh*rnd(key*5+k),1,Math.max(1,lh*.09))}
+    if(rnd(key*3.7)>.92){g.fillStyle=rnd(key)>.5?`hsl(330,95%,${62*fg+8}%)`:`hsl(50,100%,${60*fg+8}%)`;g.fillRect(x,top+lh*(.12+.7*rnd(key+9)),1,Math.max(2,lh*.06))}
+  }else if(type===1){ // กำแพงอิฐ
+    g.fillStyle=`hsl(${22+hj},38%,${(side?48:60)*fg}%)`;g.fillRect(x,top,1,lh);
+    g.fillStyle='rgba(60,25,10,.35)';
+    for(let r=0;r<4;r++){const y0=top+lh*r/4;g.fillRect(x,y0,1,Math.max(1,lh*.025));if((wx*2+(r%2)*.5)%1<.07)g.fillRect(x,y0,1,lh/4)}
+  }else{ // รั้วไม้
+    g.fillStyle=`hsl(125,45%,${14*fg+4}%)`;g.fillRect(x,top,1,lh);
+    const l=(side?52:66)*fg,post=wx<.1||wx>.9;
+    if(post||(wx*7)%1<.66){g.fillStyle=`hsl(${post?24:36},${post?55:70}%,${post?l*.75:l}%)`;g.fillRect(x,top+lh*(post?.02:.1),1,lh*(post?.98:.9))}
+    g.fillStyle=`hsl(28,60%,${l*.7}%)`;g.fillRect(x,top+lh*.3,1,lh*.08);g.fillRect(x,top+lh*.64,1,lh*.08);
+  }
+}
+function avatar(t,px,py,dx,dy){
+  const P=PETS[pet],ad=morph>0&&!(morph<3&&Math.floor(t*6)%2),s=ad?1.4:.78,c=ad?P.adult:P.baby;
+  const mv=keys.ArrowUp||keys.KeyW||keys.ArrowDown||keys.KeyS,wk=mv?Math.abs(Math.sin(t*12))*.04:0,sw=Math.sin(t*(mv?14:5));
+  const A=(col,rw,rh,vo,off=0)=>spr(p.x-dy*off*s,p.y+dx*off*s,col,rw*s,rh*s,.5-(.5-vo)*s-wk,px,py,dx,dy);
+  if(ad)A('rgba(255,228,94,.3)',.24,.24,.28);
+  if(pet==='dog'){ // หมา: ตัวกว้าง หูตกยาว หางกระดิก ปลอกคอชมพู
+    A(c.d,.034,.055,.45,-.045);A(c.d,.034,.055,.45,.045);
+    A(c.b,.12,.085,.34);A(c.d,.05,.04,.31,-.035);
+    A(c.d,.02,.06,.29,sw*.045);
+    A(c.b,.09,.075,.2);
+    A(c.d,.035,.09,.2+Math.abs(sw)*.01,-.085);A(c.d,.035,.09,.2+Math.abs(sw)*.01,.085);
+    A('#ff4fd8',.08,.014,.265);
+  }else if(pet==='cat'){ // แมว: ตัวเพรียว หูแหลมตั้ง หางยาวโค้งส่าย ลายพาดหลัง
+    A(c.d,.022,.055,.45,-.03);A(c.d,.022,.055,.45,.03);
+    A(c.b,.075,.095,.33);A(c.d,.075,.011,.3);A(c.d,.07,.011,.35);
+    A(c.d,.018,.08,.27,.06+sw*.02);A(c.d,.018,.07,.17,.075+sw*.05);A(c.b,.02,.03,.1,.085+sw*.06);
+    A(c.b,.072,.06,.19);
+    for(const o of[-.05,.05]){A(c.b,.022,.085,.1,o);A('#ff9ad5',.011,.04,.115,o)}
+  }else{ // ไก่: ตัวกลมอ้วน ปีกกระพือ ขาเรียวสีส้ม ร่างโตมีหงอนแดงและหางพัด
+    A('#ff9a1f',.012,.06,.45,-.03);A('#ff9a1f',.012,.06,.45,.03);
+    if(ad){A('#2aa86b',.02,.11,.23,-.06);A('#2a6fe0',.02,.12,.22,0);A('#e0262c',.02,.11,.23,.06)}
+    A(c.b,.125,.115,.32);
+    const fl=mv?sw*.04:sw*.01;
+    A(ad?'#d8d8d8':'#f5c400',.032,.075,.32-fl,-.125);A(ad?'#d8d8d8':'#f5c400',.032,.075,.32-fl,.125);
+    A(c.b,.065,.06,.17+(mv?Math.abs(sw)*.01:0));
+    ad?A(c.d,.03,.04,.11):A(c.d,.016,.022,.135);
+  }
+}
 function render(t){
-  const hue=(L*47)%360,hh=H/2;
-  let gr=g.createLinearGradient(0,0,0,hh);gr.addColorStop(0,`hsl(${hue+210},85%,22%)`);gr.addColorStop(1,`hsl(${hue+300},90%,62%)`);
+  const sk=SKY[(L-1)%4],hh=H/2;
+  let gr=g.createLinearGradient(0,0,0,hh);gr.addColorStop(0,sk[0]);gr.addColorStop(1,sk[1]);
   g.fillStyle=gr;g.fillRect(0,0,W,hh+1);
-  gr=g.createLinearGradient(0,hh,0,H);gr.addColorStop(0,`hsl(${hue+120},70%,20%)`);gr.addColorStop(1,`hsl(${hue+160},80%,48%)`);
-  g.fillStyle=gr;g.fillRect(0,hh,W,hh);
   if(!map)return;
-  const dx=Math.cos(p.a),dy=Math.sin(p.a),px=-dy*.66,py=dx*.66;
+  const dx=Math.cos(p.a),dy=Math.sin(p.a),px=-dy*FOV,py=dx*FOV;
+  g.fillStyle='rgba(255,255,255,.85)';
+  for(let i=0;i<7;i++){let rel=((i*.95-p.a)%(2*Math.PI)+3*Math.PI)%(2*Math.PI)-Math.PI;if(Math.abs(rel)<1.4){g.beginPath();g.ellipse(W/2+rel*W*.55,hh*(.25+.12*(i%3)),W*.07,hh*.07,0,0,7);g.fill()}}
+  gr=g.createLinearGradient(0,hh,0,H);gr.addColorStop(0,'#2e8a2e');gr.addColorStop(1,'#8be04a');
+  g.fillStyle=gr;g.fillRect(0,hh,W,hh);
+  // ตำแหน่งกล้องอยู่ด้านหลังตัวละคร ไม่ทะลุกำแพง
+  for(BK=1.1;BK>.2;BK-=.1)if(!wall(p.x-dx*BK-dx*.1,p.y-dy*BK-dy*.1))break;
+  CX=p.x-dx*BK;CY=p.y-dy*BK;
   for(let x=0;x<W;x++){
     const cam=2*x/W-1,rx=(dx+px*cam)||1e-9,ry=(dy+py*cam)||1e-9;
-    let mx=p.x|0,my=p.y|0;const ddx=Math.abs(1/rx),ddy=Math.abs(1/ry);
+    let mx=CX|0,my=CY|0;const ddx=Math.abs(1/rx),ddy=Math.abs(1/ry);
     let sx,sy,sdx,sdy,side=0;
-    if(rx<0){sx=-1;sdx=(p.x-mx)*ddx}else{sx=1;sdx=(mx+1-p.x)*ddx}
-    if(ry<0){sy=-1;sdy=(p.y-my)*ddy}else{sy=1;sdy=(my+1-p.y)*ddy}
+    if(rx<0){sx=-1;sdx=(CX-mx)*ddx}else{sx=1;sdx=(mx+1-CX)*ddx}
+    if(ry<0){sy=-1;sdy=(CY-my)*ddy}else{sy=1;sdy=(my+1-CY)*ddy}
     while(true){
       if(sdx<sdy){sdx+=ddx;mx+=sx;side=0}else{sdy+=ddy;my+=sy;side=1}
       if(map[my][mx]===1)break;
     }
     const d=Math.max(.05,side?sdy-ddy:sdx-ddx);zb[x]=d;
-    const lh=H/d,top=(H-lh)/2;
-    let wx=side?p.x+d*rx:p.y+d*ry;wx-=Math.floor(wx);
-    const hv=(hue+(mx*29+my*53)%140)%360,fog=Math.max(.3,1-d/10),l=(side?44:58)*fog;
-    g.fillStyle=`hsl(${hv},88%,${l}%)`;g.fillRect(x,top,1,lh);
-    g.fillStyle='rgba(0,0,0,.22)';
-    g.fillRect(x,top+lh*.33,1,Math.max(1,lh*.03));g.fillRect(x,top+lh*.66,1,Math.max(1,lh*.03));
-    if(wx<.04||(wx>.48&&wx<.52))g.fillRect(x,top,1,lh);
+    const lh=H/d*K;let wx=side?CX+d*rx:CY+d*ry;wx-=Math.floor(wx);
+    drawWall(x,(H-lh)/2,lh,wt[my][mx],mx,my,side,wx,d);
   }
-  // สไปรต์: เหรียญและประตูทางออก
-  const list=coins.filter(q=>q.on).map(q=>({q,d:(q.x-p.x)**2+(q.y-p.y)**2}));
-  list.push({q:exit,d:(exit.x-p.x)**2+(exit.y-p.y)**2,ex:1});
+  const list=coins.filter(q=>q.on).map(q=>({q,d:(q.x-CX)**2+(q.y-CY)**2}));
+  for(const q of potions)if(q.on)list.push({q,d:(q.x-CX)**2+(q.y-CY)**2,pot:1});
+  for(const q of traps)list.push({q,d:(q.x-CX)**2+(q.y-CY)**2,trap:1});
+  for(const q of wells)list.push({q,d:(q.x-CX)**2+(q.y-CY)**2,well:1});
+  list.push({q:exit,d:(exit.x-CX)**2+(exit.y-CY)**2,ex:1},{d:(p.x-CX)**2+(p.y-CY)**2,me:1});
   list.sort((a,b)=>b.d-a.d);
   for(const o of list){
-    if(o.ex){
+    if(o.me)avatar(t,px,py,dx,dy);
+    else if(o.well){
+      const Q=o.q,Z=(col,rw,rh,vo,off=0)=>spr(Q.x-dy*off,Q.y+dx*off,col,rw,rh,vo,px,py,dx,dy);
+      Z('#7d7d8c',.22,.12,.43);Z('#a9a9b8',.19,.09,.41);Z('#3cc6ff',.15,.045,.37+.004*Math.sin(t*4));Z('#b8ecff',.07,.015,.365,.03*Math.sin(t*2));
+      Z('#8a6a3a',.018,.2,.3,-.17);Z('#8a6a3a',.018,.2,.3,.17);Z('#d9534f',.27,.045,.1);Z('#ff8a80',.2,.02,.085);
+      const ph=(t*.7)%1;Z('rgba(120,220,255,.5)',.02,.025,.3-ph*.25,.05*Math.sin(t*3));
+    }
+    else if(o.trap){
+      const Q=o.q,on=Q.cd<=0,Z=(col,rw,rh,vo,off=0)=>spr(Q.x-dy*off,Q.y+dx*off,col,rw,rh,vo,px,py,dx,dy);
+      Z(on?'#1a8f2a':'#3d4a35',.36,.055,.5);Z(on?'#4dff5e':'#59664a',.29,.037,.5);
+      if(on)for(let i=0;i<3;i++){const ph=(t*.8+i*.33)%1;Z('#c4ffbc',.024,.024,.47-ph*.22,(i-1)*.12);Z('rgba(120,255,120,.22)',.08,.09,.3-ph*.2,(i-1)*.08)}
+      Z('#8a6a3a',.016,.17,.41,.26);Z('#f4f4f4',.055,.055,.22,.26);Z('#1a1a1a',.013,.016,.215,.245);Z('#1a1a1a',.013,.016,.215,.275);
+    }
+    else if(o.pot){
+      const Q=o.q,b=.03*Math.sin(t*3+Q.x),S=(col,rw,rh,vo)=>spr(Q.x,Q.y,col,rw,rh,vo+b,px,py,dx,dy);
+      S('rgba(200,120,255,.35)',.22,.3,.28);S('#b13bff',.13,.15,.32);S('#ff9cff',.07,.08,.34);S('#d8f2ff',.045,.08,.17);S('#a8631a',.04,.03,.09);
+    }
+    else if(o.ex){
       const pul=.5+.5*Math.sin(t*4);
       spr(exit.x,exit.y,`hsl(${t*120%360},100%,60%)`,.34+.04*pul,.5,0,px,py,dx,dy);
       spr(exit.x,exit.y,'#fff',.2,.36+.05*pul,0,px,py,dx,dy);
     }else{
       const sw=.06+.15*Math.abs(Math.cos(t*3+o.q.x*2)),bob=.12+.06*Math.sin(t*3+o.q.y);
       spr(o.q.x,o.q.y,'#ff9500',.16*(sw/.21)+.02,.2,bob,px,py,dx,dy);
-      spr(o.q.x,o.q.y,'#ffe45e',(.12*(sw/.21)+.01),.15,bob,px,py,dx,dy);
+      spr(o.q.x,o.q.y,'#ffe45e',.12*(sw/.21)+.01,.15,bob,px,py,dx,dy);
     }
   }
-  // แผนที่ย่อ (เห็นเฉพาะส่วนที่เคยสำรวจ)
-  const cs=140/w;m2.fillStyle='#12062b';m2.fillRect(0,0,140,140);
-  for(let y=0;y<w;y++)for(let x=0;x<w;x++)if(seen[y][x]){
-    m2.fillStyle=map[y][x]?`hsl(${(hue+(x*29+y*53)%140)%360},80%,50%)`:'#3b2a73';
-    m2.fillRect(x*cs,y*cs,cs+.5,cs+.5);
+  if(poison>0){
+    const gl=g.createRadialGradient(W/2,H/2,H*.25,W/2,H/2,H*.85);
+    gl.addColorStop(0,'rgba(60,255,70,.10)');gl.addColorStop(1,`rgba(20,160,30,${.45+.15*Math.sin(t*8)})`);
+    g.fillStyle=gl;g.fillRect(0,0,W,H);
+    g.fillStyle='rgba(190,255,170,.55)';
+    for(let i=0;i<10;i++){const ph=(t*.5+i*.1)%1;g.beginPath();g.arc(W*(.08+.84*rnd(i*3.3)),H*(1-ph),3+4*rnd(i),0,7);g.fill()}
   }
-  if(seen[exit.y|0][exit.x|0]){m2.fillStyle='#3cf2ff';m2.fillRect(exit.x*cs-cs/2,exit.y*cs-cs/2,cs,cs)}
+  // แผนที่ย่อ
+  const cs=140/w,col=['#2fa83a','#b8957a','#d9a04a'];m2.fillStyle='#0d2616';m2.fillRect(0,0,140,140);
+  for(let y=0;y<w;y++)for(let x=0;x<w;x++)if(seen[y][x]){m2.fillStyle=map[y][x]?col[wt[y][x]]:'#5b4a2e';m2.fillRect(x*cs,y*cs,cs+.5,cs+.5)}
+  if(seen[exit.y|0][exit.x|0]){m2.fillStyle='#3cf2ff';m2.fillRect(exit.x*cs-cs,exit.y*cs-cs,cs*2,cs*2)}
   m2.fillStyle='#ffe45e';
-  for(const q of coins)if(q.on&&seen[q.y|0][q.x|0]){m2.beginPath();m2.arc(q.x*cs,q.y*cs,Math.max(1.5,cs/3),0,7);m2.fill()}
+  for(const q of coins)if(q.on&&seen[q.y|0][q.x|0]){m2.beginPath();m2.arc(q.x*cs,q.y*cs,Math.max(1.5,cs),0,7);m2.fill()}
+  m2.fillStyle='#3cc6ff';
+  for(const q of wells)if(seen[q.y|0][q.x|0]){m2.fillRect(q.x*cs-cs,q.y*cs-cs,cs*2,cs*2)}
+  m2.fillStyle='#4dff5e';
+  for(const q of traps)if(seen[q.y|0][q.x|0]){m2.beginPath();m2.arc(q.x*cs,q.y*cs,Math.max(2,cs*1.1),0,7);m2.fill()}
+  m2.fillStyle='#d36bff';
+  for(const q of potions)if(q.on&&seen[q.y|0][q.x|0]){m2.beginPath();m2.arc(q.x*cs,q.y*cs,Math.max(2,cs*1.2),0,7);m2.fill()}
   m2.save();m2.translate(p.x*cs,p.y*cs);m2.rotate(p.a);m2.fillStyle='#ff4fd8';
-  const r=Math.max(3,cs*.7);m2.beginPath();m2.moveTo(r,0);m2.lineTo(-r*.7,r*.7);m2.lineTo(-r*.7,-r*.7);m2.fill();m2.restore();
+  const r=Math.max(3.5,cs*1.4);m2.beginPath();m2.moveTo(r,0);m2.lineTo(-r*.7,r*.7);m2.lineTo(-r*.7,-r*.7);m2.fill();m2.restore();
 }
 
 /* ---------- UI ---------- */
-function showOv(t,b,btn){$('ot').textContent=t;$('ob').innerHTML=b;$('go').textContent=btn;$('ov').classList.remove('hide')}
+function showOv(t,b,btn,pk){$('pick').style.display=pk?'flex':'none';$('ot').textContent=t;$('ob').innerHTML=b;$('go').textContent=btn;$('ov').classList.remove('hide')}
 function hud(){
+  $('pot').style.display=morph>0?'':'none';$('pt').textContent=Math.ceil(morph)+' วิ';$('pot').style.background=morph>0&&morph<4?'#a00018':'rgba(10,40,25,.72)';
+  $('psn').style.display=poison>0?'':'none';$('ps').textContent=Math.ceil(poison)+' วิ · หาบ่อน้ำ';$('psn').style.background=poison>0&&poison<10?'#a00018':'rgba(10,40,25,.72)';
   $('lv').textContent=L;$('cn').textContent=got+'/'+total;$('sc').textContent=score;
   const s=Math.ceil(timeLeft);$('tm').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
   $('time').classList.toggle('low',state==='play'&&timeLeft<10);
 }
 function begin(){$('ov').classList.add('hide');state='play';for(const k in keys)keys[k]=0}
 function restart(){L=1;score=0;setup();begin()}
-$('restart').onclick=e=>{e.currentTarget.blur();restart()};
+$('restart').onclick=e=>{e.currentTarget.blur();state='start';for(const k in keys)keys[k]=0;
+  showOv('เลือกตัวละครใหม่','<p>เลือกตัวละครที่ต้องการ แล้วกดเริ่มเล่นเพื่อเริ่มด่านที่ 1 ใหม่</p>','เริ่มเล่น',true)};
 $('go').onclick=()=>{
-  if(state==='start'){restart()}
-  else if(state==='levelup'){L++;setup();begin()}
-  else if(state==='over'){restart()}
+  if(state==='levelup'){L++;setup();begin()}
+  else restart();
 };
-showOv('เขาวงกตสายรุ้ง',
- `<p>หาทางไปยังประตูทางออกสีรุ้งให้ทันเวลา เก็บเหรียญทองเพื่อรับ <b>+50 คะแนน</b> และ <b>+3 วินาที</b></p>
-  <p><b>W / ↑</b> เดินหน้า &nbsp; <b>S / ↓</b> ถอยหลัง<br><b>← →</b> หันซ้าย–ขวา &nbsp; <b>A / D</b> เดินข้าง<br>ลากเมาส์เพื่อหมุนมุมมอง &nbsp; <b>R</b> เริ่มใหม่<br>มือถือ: ใช้ปุ่มบนหน้าจอ</p>`,'เริ่มเล่น');
-setup();
+showOv('เขาวงกตสวนพุ่มไม้',
+ `<p>เลือกตัวละครด้านล่าง แล้วฝ่าพุ่มไม้ รั้วไม้ และกำแพงอิฐ ไปยังประตูทางออกสีรุ้งให้ทันเวลา เก็บเหรียญทองรับ <b>+50 คะแนน</b> และ <b>+3 วินาที</b></p><p>ตอนเป็นตัวเล็กจะวิ่งช้า ให้หา <b>น้ำยาเปลี่ยนร่างสีม่วง</b> ในแมพ ดื่มแล้วจะโตเป็นร่างผู้ใหญ่ วิ่งเร็วขึ้น <b>15 วินาที</b></p><p>ระวัง <b>แอ่งพิษสีเขียวที่มีป้ายหัวกะโหลก</b> เหยียบแล้วจะติดพิษ <b>30 วินาที</b> วิ่งช้าลง ต้องรีบไปล้างที่ <b>บ่อน้ำ</b> ไม่งั้นตาย และถ้าโดนแอ่งพิษซ้ำตอนยังติดพิษอยู่ก็ตายเหมือนกัน</p>
+  <p><b>W / ↑</b> เดินหน้า &nbsp; <b>S / ↓</b> ถอยหลัง<br><b>← →</b> หันซ้าย–ขวา &nbsp; <b>A / D</b> เดินข้าง<br>ลากเมาส์เพื่อหมุนมุมมอง<br><b>R</b> เริ่มใหม่ &nbsp; <b>F</b> ปรับความกว้างมุมมอง<br>มือถือ: ใช้ปุ่มบนหน้าจอ</p>`,'เริ่มเล่น',true);
+const pk=$('pick');
+function sel(){pk.querySelectorAll('button').forEach(b=>b.classList.toggle('sel',b.dataset.p===pet))}
+Object.keys(PETS).forEach(k=>{const b=document.createElement('button');b.dataset.p=k;b.innerHTML=`<span>${PETS[k].e}</span>${PETS[k].n}`;b.onclick=()=>{pet=k;sel()};pk.appendChild(b)});
+sel();setup();
 
 let last=0;
 function frame(ts){
